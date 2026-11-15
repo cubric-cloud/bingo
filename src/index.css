@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Jua", "Noto Sans KR", system-ui, sans-serif;
+  --font-sans: "Noto Sans KR", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: #f7f6f2;
+    color: #1f2937;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes stamp-pop {
+  0% {
+    transform: scale(0.65);
+    opacity: 0.4;
+  }
+  65% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes ball-drop {
+  0% {
+    transform: translateY(-10px) scale(0.85);
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(2px) scale(1.04);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-stamp-pop {
+  animation: stamp-pop 190ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-ball-drop {
+  animation: ball-drop 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes draw-bingo-line {
+  0% {
+    stroke-dashoffset: 160;
+    opacity: 0.4;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.92;
+  }
+}
+
+.animate-bingo-line {
+  stroke-dasharray: 160;
+  stroke-dashoffset: 0;
+  animation: draw-bingo-line 320ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-stamp-pop,
+  .animate-ball-drop,
+  .animate-bingo-line {
+    animation: none;
+  }
+}
